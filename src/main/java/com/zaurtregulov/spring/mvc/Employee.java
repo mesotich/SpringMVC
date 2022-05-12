@@ -1,19 +1,27 @@
 package com.zaurtregulov.spring.mvc;
 
+import javax.validation.constraints.*;
 import java.util.HashMap;
 import java.util.Map;
 
 public class Employee {
 
+    @Size(min = 2, message = "name must be min 2 symbols")
     private String name;
+    //@NotEmpty(message = "surname is required field")
+    @NotBlank(message = "surname is required field")
     private String surname;
+    @Min(value = 500, message = "salary must be greeter than 499")
+    @Max(value = 1000, message = "salary must be less than 1001")
     private int salary;
     private String department;
     private Map<String, String> departments;
     private String carBrand;
     private Map<String, String> carBrands;
     private String[] languages;
-    private Map<String,String> langList;
+    private Map<String, String> langList;
+    @Pattern(regexp = "\\d{3}-\\d{2}-\\d{2}",message = "please use pattern XXX-XX-XX")
+    private String phoneNumber;
 
     public Employee() {
         departments = new HashMap<>();
@@ -25,9 +33,17 @@ public class Employee {
         carBrands.put("BMW", "BMW");
         carBrands.put("Mercedes-Benz", "MB");
         langList = new HashMap<>();
-        langList.put("English","EN");
-        langList.put("Deutch","DE");
-        langList.put("French","FR");
+        langList.put("English", "EN");
+        langList.put("Deutch", "DE");
+        langList.put("French", "FR");
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
+    }
+
+    public void setPhoneNumber(String phoneNumber) {
+        this.phoneNumber = phoneNumber;
     }
 
     public Map<String, String> getLangList() {

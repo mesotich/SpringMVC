@@ -24,5 +24,7 @@ Your car: ${employee.carBrand}
 </ul>
 <br>
 Phone number: ${employee.phoneNumber}
+<br>
+E-mail: ${employee.email}
 </body>
 </html>
